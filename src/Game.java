@@ -3,8 +3,21 @@ import java.util.HashMap;
 public class Game {//main class of the game
     public static void main(String[] args){
         HashMap<Integer,Entity> ent = new HashMap<Integer,Entity>();
-        HashMap<Integer,Equipment> eqp = new HashMap<Integer,Equipment>();
+        HashMap<Integer,Equipment> arm = new HashMap<Integer,Equipment>();
+        HashMap<Integer,Equipment> pot = new HashMap<Integer,Equipment>();
         HashMap<Integer,Weapons> wep = new HashMap<Integer,Weapons>();
+        wep.put(1, Weapons.MythSword);
+        wep.put(2, Weapons.dagger);
+        wep.put(3, Weapons.bow);
+        wep.put(4, Weapons.gun);
+        wep.put(5, Weapons.sword);
+        arm.put(1, Equipment.armour1);
+        arm.put(2, Equipment.armour2);
+        arm.put(3, Equipment.armour3);
+        pot.put(1, Equipment.heal);
+        pot.put(2, Equipment.amplify);
+        pot.put(3, Equipment.fortify);
+        pot.put(4, Equipment.precision);
         ent.put(0, Entity.Player);
         ent.put(1, Entity.Pufferfish);
         ent.put(2, Entity.Dragon);
