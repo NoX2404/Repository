@@ -49,13 +49,32 @@ public class Game {//main class of the game
         ent.put(28, Entity.Mage);
         ent.put(29, Entity.Warrior);
         ent.put(30, Entity.Warrior);
-        while(true) {
+        int wepchoice=2,armchoice=3;
+        Weapons weapon = wep.get(wepchoice);
+        Equipment armour = arm.get(armchoice);
             int mob = (int) Math.ceil(Math.random() * 30);
             Entity entity = ent.get(mob);
-            Entity.Player.hp -= (damage(entity) - Entity.Player.def);
+            //display you have encountered entity.name , TATAKAE!!
+            Entity.Player.hp+=armour.hp;
+            Entity.Player.def+=armour.def;
+            while(entity.hp>0 && Entity.Player.hp>0) {
+                Entity.Player.hp -= Math.max(0,damage(entity) - (Entity.Player.def));
+                int potchoice = 1;
+                switch(potchoice){
+                    case 1: Entity.Player.hp+=pot.get(1).buff;break;//display you have healed ur self
+                    case 2: Entity.Player.atk+=pot.get(2).buff;break;//display you have amplified ur power
+                    case 3: Entity.Player.def+=pot.get(3).buff;break;//display you have fortified ur self
+                    case 4: Entity.Player.acc+=pot.get(4).buff;break;//display u got better eyes
+                    default: entity.hp-= (damage(Entity.Player , weapon ));
+                }
+            }
+        if (entity.hp <= 0) {
+            //display you have defeated entity.name
+        }else {
+            //display entity.name has defeated you
+        }
 
         }
-    }
     static int damage(Entity entity){
         if(entity!=Entity.Mage){
             long hit = Math.round(Math.random()*100);
