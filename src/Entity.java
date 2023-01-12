@@ -21,7 +21,11 @@ public class Entity {
         acc = backacc;
     }
 
-    static Entity Player = new Entity(1000, 100, 200, "Gamer", 0);//You yourself
+    public String sprite(){
+        return "./Sprite/"+name;
+    }
+
+       static Entity Player = new Entity(1000, 100, 200, "Gamer", 0);//You yourself
        static Entity Dragon = new Entity(10000, 500, 1000, "The Majestic Flame Breather", 80);//Boss enemy with highest stats
        static Entity Warrior = new Entity(500, 300, 100, "a Gladiator", 70);//Skilled warrior,good at fighting hence high atk
        static Entity Zombie = new Entity(1000, 100, 500, "a Infected", 40);//Infected player everything same except more def for virus
