@@ -6,125 +6,130 @@ import java.awt.event.ActionListener;
 public class Frame {
     static Weapons weapons;
     static Equipment equip;
-    public static void main(String[]args)  {
-        JFrame j=new JFrame("2D_GAME");//this is the window
-        Image icon= Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\idk\\export\\iconic.PNG");//creates icon for the application
+
+    public static void main(String[] args) {
+        JFrame j = new JFrame("2D_GAME");//this is the window
+        Image icon = Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\idk\\export\\iconic.PNG");//creates icon for the application
         j.setIconImage(icon);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//closes frame
         j.setResizable(false);
-        j.setSize(500,200);//frame size
+        j.setSize(500, 200);//frame size
         j.getContentPane().setBackground(Color.BLACK);//applies color
         j.setLocationRelativeTo(null);//centers the frame to the screen
         j.setVisible(true);
         j.setLayout(null);
 
 
-        Icon icon1=new ImageIcon("C:\\Users\\PC\\Desktop\\idk\\export\\icon1.PNG");//another icon
-        JButton b1=new JButton();
-        b1.setBounds(50,50,100,50);//size of button and coordinates
+        Icon icon1 = new ImageIcon("C:\\Users\\PC\\Desktop\\idk\\export\\icon1.PNG");//another icon
+        JButton b1 = new JButton();
+        b1.setBounds(50, 50, 100, 50);//size of button and coordinates
         b1.setIcon(icon1);
         b1.setText("Equipment");
-        b1.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            JFrame f1=new JFrame();
-            f1.setSize(600,600);//size of new frame
-            f1.setVisible(true);
-            f1.setLayout(null);
-            f1.setResizable(false);
-
-            JButton eqp1=new JButton("armour1");
-            eqp1.setBounds(100,50,400,100);//size of button and coordinates
-            eqp1.setHorizontalTextPosition(SwingConstants.LEFT);
-            eqp1.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    equip=Game.arm.get(1);
-                    System.out.println("Armour Equipped!");
-                    f1.dispose();//closes the current frame without closing the main frame
-                }
-            });
-
-            JButton eqp2=new JButton("armour2");
-            eqp2.setBounds(100,200,400,100);//size of button and coordinates
-            eqp2.setHorizontalTextPosition(SwingConstants.CENTER);
-            eqp2.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    equip=Game.arm.get(2);
-                    System.out.println("Armour Equipped!");
-                    f1.dispose();//closes the current frame without closing the main frame
-                }
-            });
-
-            JButton eqp3=new JButton("armour3");
-            eqp3.setHorizontalTextPosition(SwingConstants.LEFT);
-            eqp3.setBounds(100,350,400,100);//size of button and coordinates
-            eqp3.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    equip=Game.arm.get(3);
-                    System.out.println("Armour Equipped!");
-                    f1.dispose();//closes the current frame without closing the main frame
-                }
-            });
-            f1.add(eqp1);f1.add(eqp2);f1.add(eqp3);
-            f1.setDefaultCloseOperation(f1.DISPOSE_ON_CLOSE);//closes the current frame without closing the main frame
-        }
-        });
-        j.add(b1);//adds button to main frame
-
-        Icon icon2=new ImageIcon("C:\\Users\\PC\\Desktop\\idk\\export\\sword.GIF");
-        JButton b2=new JButton();
-        b2.setBounds(200,50,100,50);//size of button and coordinates
-        b2.setIcon(icon2);
-        b2.setText("");
-        b2.setHorizontalTextPosition(SwingConstants.CENTER);
-        b2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                JFrame f1=new JFrame();
-                f1.setSize(600,600);//size of new frame
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f1 = new JFrame();
+                f1.setSize(600, 600);//size of new frame
                 f1.setVisible(true);
                 f1.setLayout(null);
                 f1.setResizable(false);
 
-                JButton a1=new JButton("Bow");
-                a1.setBounds(100,50,400,100);//size of button and coordinates
+                JButton eqp1 = new JButton("armour1");
+                eqp1.setBounds(100, 50, 400, 100);//size of button and coordinates
+                eqp1.setHorizontalTextPosition(SwingConstants.LEFT);
+                eqp1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        equip = Game.arm.get(1);
+                        System.out.println("Armour Equipped!");
+                        f1.dispose();//closes the current frame without closing the main frame
+                    }
+                });
+
+                JButton eqp2 = new JButton("armour2");
+                eqp2.setBounds(100, 200, 400, 100);//size of button and coordinates
+                eqp2.setHorizontalTextPosition(SwingConstants.CENTER);
+                eqp2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        equip = Game.arm.get(2);
+                        System.out.println("Armour Equipped!");
+                        f1.dispose();//closes the current frame without closing the main frame
+                    }
+                });
+
+                JButton eqp3 = new JButton("armour3");
+                eqp3.setHorizontalTextPosition(SwingConstants.LEFT);
+                eqp3.setBounds(100, 350, 400, 100);//size of button and coordinates
+                eqp3.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        equip = Game.arm.get(3);
+                        System.out.println("Armour Equipped!");
+                        f1.dispose();//closes the current frame without closing the main frame
+                    }
+                });
+                f1.add(eqp1);
+                f1.add(eqp2);
+                f1.add(eqp3);
+                f1.setDefaultCloseOperation(f1.DISPOSE_ON_CLOSE);//closes the current frame without closing the main frame
+            }
+        });
+        j.add(b1);//adds button to main frame
+
+        Icon icon2 = new ImageIcon("C:\\Users\\PC\\Desktop\\idk\\export\\sword.GIF");
+        JButton b2 = new JButton();
+        b2.setBounds(200, 50, 100, 50);//size of button and coordinates
+        b2.setIcon(icon2);
+        b2.setText("");
+        b2.setHorizontalTextPosition(SwingConstants.CENTER);
+        b2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f1 = new JFrame();
+                f1.setSize(600, 600);//size of new frame
+                f1.setVisible(true);
+                f1.setLayout(null);
+                f1.setResizable(false);
+
+                JButton a1 = new JButton("Bow");
+                a1.setBounds(100, 50, 400, 100);//size of button and coordinates
                 a1.setHorizontalTextPosition(SwingConstants.LEFT);
-                a1.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        weapons=Game.wep.get(3);
+                a1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        weapons = Game.wep.get(3);
                         System.out.println("You are using a bow");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
 
-                JButton a2=new JButton("Dagger");
-                a2.setBounds(100,200,400,100);//size of button and coordinates
+                JButton a2 = new JButton("Dagger");
+                a2.setBounds(100, 200, 400, 100);//size of button and coordinates
                 a2.setHorizontalTextPosition(SwingConstants.CENTER);
-                a2.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                a2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         weapons = Game.wep.get(2);
                         System.out.println("You are using a dagger");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
 
-                JButton a3=new JButton("Sword");
+                JButton a3 = new JButton("Sword");
                 a3.setHorizontalTextPosition(SwingConstants.LEFT);
-                a3.setBounds(100,350,400,100);//size of button and coordinates
-                a3.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        weapons=Game.wep.get(5);
+                a3.setBounds(100, 350, 400, 100);//size of button and coordinates
+                a3.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        weapons = Game.wep.get(5);
                         System.out.println("You are using a sword");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
-                f1.add(a1);f1.add(a2);f1.add(a3);
+                f1.add(a1);
+                f1.add(a2);
+                f1.add(a3);
                 f1.setDefaultCloseOperation(f1.DISPOSE_ON_CLOSE);//closes the current frame without closing the main frame
             }
         });
         j.add(b2);//adds button to main frame
 
-        JButton b3=new JButton("Battle");
-        b3.setBounds(350,50,100,50);//size of button and coordinates
-        b3.addActionListener(new ActionListener(){
+        JButton b3 = new JButton("Battle");
+        b3.setBounds(350, 50, 100, 50);//size of button and coordinates
+        b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game.fight(equip);
                 JFrame j2 = new JFrame("GAME");
@@ -154,10 +159,10 @@ public class Frame {
                     atk.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (Game.entity.hp > 0 && Entity.Player.hp > 0) {
-                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - 0.15*(Entity.Player.def));
+                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - 0.15 * (Entity.Player.def));
                                 Game.entity.hp -= (Game.damage(Entity.Player, weapons));
-                                System.out.println("You have "+Entity.Player.hp+" left");
-                                System.out.println("Your opponent has "+Game.entity.hp+" left");
+                                System.out.println("You have " + Entity.Player.hp + " left");
+                                System.out.println("Your opponent has " + Game.entity.hp + " left");
                             } else {
                                 if (Game.entity.hp <= 0) {
                                     System.out.println("You defeated Your opponent!!! " + Game.entity.name);
@@ -216,12 +221,12 @@ public class Frame {
                     });
                     j2.add(forti);
                 }
-              }
-            });
+            }
+        });
         j.add(b3);//adds button to main frame
 
-        JPanel p1=new JPanel();
-        p1.setBounds(0,120,960,430);
+        JPanel p1 = new JPanel();
+        p1.setBounds(0, 120, 960, 430);
         p1.setVisible(true);
         p1.setBackground(Color.BLACK);
         p1.setLayout(null);
