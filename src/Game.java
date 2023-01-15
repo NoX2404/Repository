@@ -61,24 +61,6 @@ public class Game {//main class of the game
            Entity.Player.def+= armour.def;
            System.out.println("You have equipped your armour and ready to fight");
        }
-        /*
-        public static void fight(Entity entity , Weapons weapon){
-            while(entity.hp>0 && Entity.Player.hp>0) {
-                Entity.Player.hp -= Math.max(0,damage(entity) - (Entity.Player.def));
-
-                entity.hp -= (damage(Entity.Player , weapon ));
-                }
-
-            if (entity.hp <= 0) {
-                System.out.println("You defeated Your opponent!!! "+entity.name);
-            }else {
-                System.out.println("You have been defeated by "+entity.name);
-            }
-            entity.reset();
-            Entity.Player.reset();
-        }
-
-        */
         public static int damage(Entity entity){
             if(entity!=Entity.Mage){
                 long hit = Math.round(Math.random()*100);
@@ -99,6 +81,7 @@ public class Game {//main class of the game
                 long crit = Math.round(Math.random() * 100);
                 if (crit <= weapon.critRate) {
                     attack = (entity.atk + weapon.atk) * 2;
+                    System.out.println("You landed a critical strike!");
                 } else {
                    attack = (entity.atk + weapon.atk);
                 }

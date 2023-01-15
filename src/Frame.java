@@ -38,7 +38,7 @@ public class Frame {
             eqp1.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     equip=Game.arm.get(1);
-                    System.out.println(equip);
+                    System.out.println("Armour Equipped!");
                     f1.dispose();//closes the current frame without closing the main frame
                 }
             });
@@ -49,7 +49,7 @@ public class Frame {
             eqp2.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     equip=Game.arm.get(2);
-                    System.out.println(equip);
+                    System.out.println("Armour Equipped!");
                     f1.dispose();//closes the current frame without closing the main frame
                 }
             });
@@ -60,7 +60,7 @@ public class Frame {
             eqp3.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     equip=Game.arm.get(3);
-                    System.out.println(equip);
+                    System.out.println("Armour Equipped!");
                     f1.dispose();//closes the current frame without closing the main frame
                 }
             });
@@ -90,7 +90,7 @@ public class Frame {
                 a1.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         weapons=Game.wep.get(3);
-                        System.out.println(weapons);
+                        System.out.println("You are using a bow");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
@@ -101,7 +101,7 @@ public class Frame {
                 a2.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         weapons = Game.wep.get(2);
-                        System.out.println(weapons);
+                        System.out.println("You are using a dagger");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
@@ -112,7 +112,7 @@ public class Frame {
                 a3.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         weapons=Game.wep.get(5);
-                        System.out.println(weapons);
+                        System.out.println("You are using a sword");
                         f1.dispose();//closes the current frame without closing the main frame
                     }
                 });
@@ -134,13 +134,13 @@ public class Frame {
                 j2.setVisible(true);
                 j2.setLayout(null);
 
-                ImageIcon hero = new ImageIcon(Entity.Player.sprite());
+                ImageIcon hero = new ImageIcon(Entity.Player.sprite());//display the images
                 ImageIcon enemy = new ImageIcon(Game.entity.sprite());
                 JLabel l = new JLabel();
-                l.setBounds(100, 230, 96, 96);
+                l.setBounds(100, 230, 256, 256);
                 l.setIcon(hero);
                 JLabel l1 = new JLabel();
-                l1.setBounds(764, 230, 96, 96);
+                l1.setBounds(764, 230, 256, 256);
                 l1.setIcon(enemy);
                 j2.add(l);
                 j2.add(l1);
@@ -154,7 +154,7 @@ public class Frame {
                     atk.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (Game.entity.hp > 0 && Entity.Player.hp > 0) {
-                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - (Entity.Player.def));
+                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - 0.15*(Entity.Player.def));
                                 Game.entity.hp -= (Game.damage(Entity.Player, weapons));
                                 System.out.println("You have "+Entity.Player.hp+" left");
                                 System.out.println("Your opponent has "+Game.entity.hp+" left");
@@ -174,6 +174,22 @@ public class Frame {
                     heal.setBounds(760, 600, 100, 50);
                     heal.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
+                            if (Game.entity.hp > 0 && Entity.Player.hp > 0) {
+                                Game.PotionEffect(1);
+                                System.out.println("You've healed yourself");
+                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - 0.4 * (Entity.Player.def));
+
+                                System.out.println("You have " + Entity.Player.hp + " left");
+                                System.out.println("Your opponent has " + Game.entity.hp + " left");
+                            } else {
+                                if (Game.entity.hp <= 0) {
+                                    System.out.println("You defeated Your opponent!!! " + Game.entity.name);
+                                } else {
+                                    System.out.println("You have been defeated by " + Game.entity.name);
+                                }
+                                Game.entity.reset();
+                                Entity.Player.reset();
+                            }
                         }
                     });
                     j2.add(heal);
@@ -181,6 +197,21 @@ public class Frame {
                     forti.setBounds(430, 600, 100, 50);
                     forti.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
+                            if (Game.entity.hp > 0 && Entity.Player.hp > 0) {
+                                Game.PotionEffect(3);
+                                System.out.println("You increased your defence");
+                                Entity.Player.hp -= Math.max(0, Game.damage(Game.entity) - 0.4 * (Entity.Player.def));
+                                System.out.println("You have " + Entity.Player.hp + " left");
+                                System.out.println("Your opponent has " + Game.entity.hp + " left");
+                            } else {
+                                if (Game.entity.hp <= 0) {
+                                    System.out.println("You defeated Your opponent!!! " + Game.entity.name);
+                                } else {
+                                    System.out.println("You have been defeated by " + Game.entity.name);
+                                }
+                                Game.entity.reset();
+                                Entity.Player.reset();
+                            }
                         }
                     });
                     j2.add(forti);
